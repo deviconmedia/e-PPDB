@@ -2,7 +2,7 @@
     <div class="bend niceties preview-1">
         <div id="ensign-nivoslider-3" class="slides" style="max-height: 550px; object-fit: cover;">
             @foreach ($sliders as $key => $slider)
-                <img src="{{asset('storage/images/sliders/' .$slider->image)}}" alt="slider" title="#slider-direction-{{$key+1}}" style="max-height: 550px"/>
+                <img src="{{asset('uploads/frontend/' .$slider->image)}}" alt="slider" title="#slider-direction-{{$key+1}}" style="max-height: 550px"/>
             @endforeach
             {{-- @foreach ($sliders as $key => $slider)
             <img src="{{ asset('frontend/img/slider/1.jpg') }}" alt="slider" title="#slider-direction-{{ $key+1 }}">

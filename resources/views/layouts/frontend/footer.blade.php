@@ -7,7 +7,7 @@
                         @if (@$web->logo == NULL)
                             <img class="img-responsive" src="{{asset('frontend/img/ifiber.png')}}" alt="logo">
                         @else
-                            <img class="img-responsive" src="{{asset('storage/images/logo/' .$web->logo)}}" alt="logo">
+                            <img class="img-responsive" src="{{asset('uploads/frontend/' .$web->logo)}}" alt="logo">
                         @endif
                     </a>
                     <div class="footer-about">

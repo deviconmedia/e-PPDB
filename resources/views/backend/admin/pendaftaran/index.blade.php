@@ -27,7 +27,7 @@
             <tbody>
                 @foreach ($pendaftaran as $item)   
                 <tr>
-                    <td>
+                    <td class="d-flex inline">
                         <a href="{{ route('admin.pendaftaran.show', $item->user->id) }}" class="btn btn-sm btn-primary mr-2">
                             <i class="fa fa-eye"></i>
                         </a>

@@ -49,7 +49,7 @@ class PendaftaranController extends Controller
             'agama'             => 'required',
             'alamat'            => 'required',
             'no_hp'             => 'required',
-            'email'             => 'required|email|unique:users',
+            'email'             => 'required|email|unique:data_diri',
             'tinggi_badan'      => 'required|numeric',
             'berat_badan'       => 'required|numeric',
         ]);
@@ -190,7 +190,8 @@ class PendaftaranController extends Controller
         $berkas->foto               = $fotoName;
         $success = $berkas->save();
         if($success){
-             return view('backend.guest.pendaftaran.success'); 
+            $web      = Website::get()->first();
+             return view('backend.guest.pendaftaran.success', compact('web')); 
         }
     }
 
