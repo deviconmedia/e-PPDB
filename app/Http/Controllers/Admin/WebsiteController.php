@@ -26,7 +26,7 @@ class WebsiteController extends Controller
         ]);
         if($validated){
             $logoName = time() . rand(1000, 9999) . '.' . $request->logo->extension();
-            $request->logo->move(public_path('storage/images/logo'), $logoName);
+            $request->logo->move(public_path('uploads/frontend'), $logoName);
 
             $web = Website::find($id);
             $web->company_name  = $request->company_name;
@@ -67,7 +67,7 @@ class WebsiteController extends Controller
 
         if($validated){
             $imgName     = time() . rand(1000, 9999) . '.' . $request->image->extension();
-            $request->image->move(public_path('storage/images/sliders'), $imgName);
+            $request->image->move(public_path('uploads/frontend'), $imgName);
 
             $slider = new Slider();
             $slider->image          = $imgName;

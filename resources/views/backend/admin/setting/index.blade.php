@@ -88,7 +88,7 @@
                             <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="right" title="Delete"><i class="bi bi-trash"></i></button>
                           </form>
                         </td>
-                        <td><img src="{{ asset('storage/images/sliders/' . $slider->image) }}" alt="sliders" width="80"></td>
+                        <td><img src="{{ asset('uploads/frontend/' . $slider->image) }}" alt="sliders" width="80"></td>
                         <td>{{ $slider->title }}</td>
                         <td>{{ $slider->description }}</td>
                         <td>{{ $slider->button_link }}</td>
