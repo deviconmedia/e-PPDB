@@ -8,10 +8,29 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 
+/*
+* Update since 20/03/2023
+* Konfigurasi menu pendaftaran ketika periode pendaftaran sudah ditutup
+*/
+use App\Models\Periode;
+
 class AuthController extends Controller
 {
     public function login()
     {
+        //ambil data terakhir dari tabel periode
+        $periode = Periode::orderBy('id', 'desc')->first();
+        //jika periode->tanggal_selesai tidak sama dengan null
+        if ($periode->tanggal_selesai != null) {
+            //jika tanggal sekarang lebih besar dari tanggal selesai
+            if (date('Y-m-d') > $periode->tanggal_selesai) {
+                //jika status periode = tutup
+                if ($periode->status_periode == 'Tutup') {
+                    //redirect ke halaman login
+                    return view('auth.404');
+                }
+            }
+        }
         return view('auth.login');
     }
 
@@ -39,6 +58,18 @@ class AuthController extends Controller
     }
     public function register()
     {
+        $periode = Periode::orderBy('id', 'desc')->first();
+        //jika periode->tanggal_selesai tidak sama dengan null
+        if ($periode->tanggal_selesai != null) {
+            //jika tanggal sekarang lebih besar dari tanggal selesai
+            if (date('Y-m-d') > $periode->tanggal_selesai) {
+                //jika status periode = tutup
+                if ($periode->status_periode == 'Tutup') {
+                    //redirect ke halaman login
+                    return view('auth.404');
+                }
+            }
+        }
         return view('auth.register');
     }
 

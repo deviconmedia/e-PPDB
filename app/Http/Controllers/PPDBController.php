@@ -7,6 +7,11 @@ use App\Models\Website;
 use App\Models\Slider;
 use App\Models\Informasi;
 use App\Models\Jurusan;
+/*
+* Update since 20/03/2023
+* Konfigurasi menu pendaftaran ketika periode pendaftaran sudah ditutup
+*/
+use App\Models\Periode;
 class PPDBController extends Controller
 {
     public function index()
@@ -14,7 +19,9 @@ class PPDBController extends Controller
         $web        = Website::get()->first();
         $sliders    = Slider::where('is_active', 1)->get();
         $jurusans   = Jurusan::all();
-        return view('welcome', compact('web', 'sliders', 'jurusans'));
+        //ambil data terakhir dari tabel periode
+        $periode = Periode::orderBy('id', 'desc')->first();
+        return view('welcome', compact('web', 'sliders', 'jurusans', 'periode'));
     }
 
     // Change one frontend branch
