@@ -8,7 +8,7 @@
      <div class="row">
          {{-- Since update 03/02/2023 --}}
          @foreach ($jurusans as $jurusan)
-             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 wow fadeIn">
+             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn">
                  <div class="card shadow shadow-lg" style="width: 28rem;">
                      <img src="{{ asset('uploads/img/' . $jurusan->thumbnail) }}" class="card-img-top" alt="Thumbnail">
                      <div class="card-body">
