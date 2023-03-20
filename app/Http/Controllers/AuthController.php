@@ -45,17 +45,16 @@ class AuthController extends Controller
     public function doRegister(Request $request)
     {
         $validatedData = $request->validate([
-            'firstname'             => 'required',
-            'lastname'              => 'required',
+            'fname'                 => 'required',
             'email'                 => 'required|email|unique:users',
-            'pass'                  => 'required|min:3',
-            'passConf'              => 'required|same:pass',
+            'password'              => 'required|min:3',
+            'passConf'              => 'required|same:password',
         ]);
         User::create([
             'role'      => 'guest',
-            'name'      => $request->firstname . ' ' . $request->lastname,
+            'name'      => $request->fname,
             'email'     => $request->email,
-            'password'  => Hash::make($request->pass),
+            'password'  => Hash::make($request->password),
         ]);
         return redirect()->route('auth.login')->with('success', 'Berhasil mendaftar, silahkan login.');
     }
